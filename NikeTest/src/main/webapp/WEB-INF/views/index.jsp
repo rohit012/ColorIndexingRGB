@@ -155,7 +155,7 @@
     </script>
 </head>
 <body>
-<form action="" method="post" id="form1">
+<form action="/app/color" method="post" id="form1">
 
 
 
@@ -252,7 +252,7 @@
 
 <div>
 
-<input type="hidden" name="color" id="color"/>
+<input type="hidden" name="color" id="color" />
 <input type="hidden" name="C1" id="C1" value=""/>
 <input type="hidden" name="C2" id="C2" value=""/>
 <input type="hidden" name="C3" id="C3" value=""/>

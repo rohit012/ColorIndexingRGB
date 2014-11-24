@@ -32,7 +32,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/")
 	public String home(Locale locale, Model model,HttpServletRequest req) {
 		
 		model.addAttribute("color", "#000000");
@@ -64,9 +64,11 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/color", method = RequestMethod.GET)
-	public String color(Locale locale, Model model) {
+	@RequestMapping(value = "/color", method = RequestMethod.POST)
+	public String color(Locale locale, Model model, HttpServletRequest req) {
 		
+		String value=req.getParameter("C2");
+		System.out.println("value of c1 "+value);
 		
 		/*logger.info("Welcome home! The client locale is {}.", locale);
 		
