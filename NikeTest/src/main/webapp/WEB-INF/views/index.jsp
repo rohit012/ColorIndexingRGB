@@ -7,47 +7,155 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>239 Project Demo</title>
+	<script type="text/javascript">
+		function modifyColor(color)
+		{
+			var temp_color = document.getElementById('color').value;
+			
+		}
+		function component(comp)
+		{
+			document.getElementById('color').value = comp;
+			alert("here");
+		}
+		function ex()
+		{
+			alert("Here");
+			alert(document.getElementById('C1').value);
+			alert(document.getElementById('C2').value);
+			alert(document.getElementById('C3').value);
+		}
+		function checkAllValues()
+		{
+			if(document.getElementById('C1').value == "" ||
+					document.getElementById('C2').value == "" ||
+					document.getElementById('C3').value == "")
+			{
+				return false;
+			}
+			return true;
+		}
+	</script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-  $(".rect1").click(function(){
-$(".a").css("fill","#29ABE2");   
+  $(".rect1").click(function(){	   
+	  //$("#color").val().css("fill","#29ABE2");
+	  if($("#color").val() == 'a')
+		  {
+		  $("#C1").val("#29ABE2");
+		  $(".a").css("fill","#29ABE2");
+		  }
+	  else if($("#color").val() == 'b')
+		  {
+		  $("#C2").val("#29ABE2");
+		  $(".b").css("fill","#29ABE2");
+		  }
+	  else if($("#color").val() == 'c')
+	  {
+		  $("#C3").val("#29ABE2");
+		  $(".c").css("fill","#29ABE2");
+	  }
   });
 });
 
  $(document).ready(function(){
   $(".rect2").click(function(){
-$(".a").css("fill","#FF0000");   
+	//  $("#color").val().css("fill","#FFFFFF");
+	  if($("#color").val() == 'a')
+	  {
+		  $("#C1").val("#FFFFFF");
+	  	$(".a").css("fill","#FFFFFF");
+	  }
+  else if($("#color").val() == 'b')
+	  {
+	  $("#C2").val("#FFFFFF");
+	  $(".b").css("fill","#FFFFFF");
+	  }
+  else if($("#color").val() == 'c')
+  {
+	  $("#C3").val("#FFFFFF");
+	  $(".c").css("fill","#FFFFFF");
+  }
   });
 });
 
   $(document).ready(function(){
   $(".rect3").click(function(){
-$(".a").css("fill","#FCEE21");   
+	  if($("#color").val() == 'a')
+	  {
+		  $("#C1").val("#000000");
+	  $(".a").css("fill","#000000");
+	  }
+  else if($("#color").val() == 'b')
+	  {
+	  $("#C2").val("#000000");
+	  $(".b").css("fill","#000000");
+	  }
+  else if($("#color").val() == 'c')
+  {
+	  $("#C3").val("#000000");
+	  $(".c").css("fill","#000000");
+  }
   });
 });
 
    $(document).ready(function(){
   $(".rect4").click(function(){
-$(".a").css("fill","#000000");   
+	//  $("#color").val().css("fill","#FF000F");
+	  if($("#color").val() == 'a')
+	  {
+		  $("#C1").val("#FF000F");
+	  $(".a").css("fill","#FF000F");
+	  }
+  else if($("#color").val() == 'b')
+	  {
+	  $("#C2").val("#FF000F");
+	  $(".b").css("fill","#FF000F");
+	  }
+  else if($("#color").val() == 'c')
+  {
+	  $("#C3").val("#FF000F");
+	  $(".c").css("fill","#FF000F");
+  }  
   });
 });
 
     $(document).ready(function(){
-  $(".rect5").click(function(){
-$(".a").css("fill","#00FF00");   
+  $(".rect5").click(function(){	  
+	//  $("#color").val().css("fill","#0000FF");
+	  if($("#color").val() == 'a')
+	  {
+		  $("#C1").val("#0000FF");
+	  $(".a").css("fill","#0000FF");
+	  }
+  else if($("#color").val() == 'b')
+	  {
+	  $("#C2").val("#0000FF");
+	  
+	  $(".b").css("fill","#0000FF");
+	  }
+  else if($("#color").val() == 'c')
+  {
+	  $("#C3").val("#0000FF");
+	  $(".c").css("fill","#0000FF");
+  }    
   });
 });
 
-
+	
 
  $( ".b" ).click(function() {
   $( ".b" ).text( "Something was selected" ).show().fadeOut( 1000 );
 });
 
+ $( ".component" ).change(function() {
+	  alert( "Handler for .change() called." );
+	});
     </script>
 </head>
 <body>
+<form action="" method="post" id="form1">
 
 
 
@@ -72,7 +180,7 @@ $(".a").css("fill","#00FF00");
 
   .rect2:hover
   {
-    opacity: 0.3;
+    opacity: 1.0;
     cursor:pointer;
   }
 
@@ -130,10 +238,10 @@ $(".a").css("fill","#00FF00");
 		c1.159-5.27-115.785-23.709-116.605-51.661c-0.5-17.062,42.404-33.037,72.325-38.376c65.959-11.771,120.526,18.916,141.697,32.472"
 		/>
 </g>
-<rect class= "b" x="242.506" y="182.727" style="fill:#00FFFF;stroke:#1B1464;stroke-width:10;stroke-miterlimit:10;" width="107.749" height="29.52"/>
-<rect class= "a" x="296.38" y="485.31" style="fill:#0071BC;stroke:#1B1464;stroke-width:10;stroke-miterlimit:10;" width="135.055" height="45.756"/>
-<rect class= "a" x="441.768" y="587.155" style="fill:#FF00FF;stroke:#1B1464;stroke-width:10;stroke-miterlimit:10;" width="29.52" height="109.225"/>
-<path class = "a" style="fill:#FF0000;stroke:#1B1464;stroke-width:10;stroke-miterlimit:10;" d="M396.811,258.05
+<rect class= "d" x="242.506" y="182.727" style="fill:#00FFFF;stroke:#1B1464;stroke-width:10;stroke-miterlimit:10;" width="107.749" height="29.52"/>
+<rect class= "c" x="296.38" y="485.31" style="fill:#0071BC;stroke:#1B1464;stroke-width:10;stroke-miterlimit:10;" width="135.055" height="45.756"/>
+<rect class= "b" x="441.768" y="587.155" style="fill:#FF00FF;stroke:#1B1464;stroke-width:10;stroke-miterlimit:10;" width="29.52" height="109.225"/>
+<path class = "c" style="fill:#FF0000;stroke:#1B1464;stroke-width:10;stroke-miterlimit:10;" d="M396.811,258.05
 	c-2.06,3.101-3.503,7.103-6.981,8.432c-3.658,1.397-7.663-0.926-11.578-0.831c-6.346,0.154-10.982,7.142-10.287,13.451
 	s5.386,11.557,10.784,14.896c12.398,7.668,28.008,7.078,42.557,6.151c6.393-0.407,13.709-1.339,17.261-6.67
 	c1.638-2.459,2.163-5.488,2.377-8.435c0.848-11.713-3.272-24.351-12.838-31.162S403.31,248.268,396.811,258.05z"/>
@@ -142,7 +250,26 @@ $(".a").css("fill","#00FF00");
 
 	</div>
 
+<div>
 
+<input type="hidden" name="color" id="color"/>
+<input type="hidden" name="C1" id="C1" value=""/>
+<input type="hidden" name="C2" id="C2" value=""/>
+<input type="hidden" name="C3" id="C3" value=""/>
+<button onclick="ex()">Click me</button>
+<br>
+<br>
 
+ <input type="submit" value="Proceed" name="submit" onsubmit="return checkAllValues()"/>
+
+</div>
+
+ </form>
+
+<select id="component" name="component" class="component" onchange="component(this.value)">
+	<option value="a">C1</option>
+	<option value="b">C2</option>
+	<option value="c">C3</option>
+</select>
 </body>
 </html>
