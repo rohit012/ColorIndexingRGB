@@ -10,10 +10,21 @@ public class User {
 	
 	@Id
 	private String id;
+	private String username;
+	private String gender;
+	private  int countryCode;
+ 
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	
-	private String username;
- 
+	
 	public User(String username, String password) {
 		super();
 		this.username = username;
@@ -36,6 +47,22 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public int getCountryCode() {
+		return countryCode;
+	}
+
+	public void setCountryCode(int countryCode) {
+		this.countryCode = countryCode;
 	}
 	
 	
