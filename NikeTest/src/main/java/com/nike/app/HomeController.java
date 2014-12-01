@@ -48,7 +48,7 @@ public class HomeController {
 		 MongoOperations mongoOperation = (MongoOperations)mongoTemplate;
 			
 		    
-			User user = new User("rohit", "password123");
+			User user = new User("rohitwexsxx", "password123");
 			mongoOperation.save(user);
 			
 			
