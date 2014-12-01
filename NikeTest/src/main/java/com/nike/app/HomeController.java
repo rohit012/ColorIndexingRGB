@@ -16,7 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.nike.model.Product;
 import com.nike.model.User;
+import com.nike.services.ProductService;
 
 /**
  * Handles requests for the application home page.
@@ -26,6 +28,9 @@ public class HomeController {
 	
 	@Autowired
 	MongoTemplate mongoTemplate;
+	
+	@Autowired
+	ProductService productService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -78,6 +83,34 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );*/
 		
 		return "color";
+	}
+	
+	//to show product1 data
+	@RequestMapping(value = "/product1", method = RequestMethod.GET)
+	public String productController(Locale locale, Model model,HttpServletRequest req) {
+			
+		return "Product1";
+	}
+	
+	
+	//post product1 data
+	@RequestMapping(value = "/product1Data", method = RequestMethod.POST)
+	public String product1DataController(Locale locale, Model model,HttpServletRequest req) {
+			
+		Product product=new Product();
+		product.setCollar(req.getParameter("Collar"));
+		product.setLogo(req.getParameter("Logo"));
+		product.setSleeves(req.getParameter("Sleeves"));
+		product.setTshirtColor(req.getParameter("tshirtColor"));
+		
+		logger.info("Tshirt type "+req.getParameter("TshirtType"));
+		
+		
+		productService.saveProductData(product);
+		
+		System.out.println("val1 "+req.getParameter("TshirtColor"));
+		
+		return "Product1";
 	}
 	
 }
