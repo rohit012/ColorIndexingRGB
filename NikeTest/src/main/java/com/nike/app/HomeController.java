@@ -7,16 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.nike.model.User;
+import com.nike.model.Product;
+import com.nike.services.ProductService;
 
 /**
  * Handles requests for the application home page.
@@ -26,6 +24,9 @@ public class HomeController {
 	
 	@Autowired
 	MongoTemplate mongoTemplate;
+	
+	@Autowired
+	ProductService productService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -104,6 +105,30 @@ public class HomeController {
 		
 		
 		return "Page2Display";
+	}
+	
+	
+	/**
+	 * to display page2
+	 */
+	@RequestMapping(value = "/page1Data")
+	public String page1Data(Locale locale, Model model,HttpServletRequest req) {
+		
+		Product product=new Product();
+		product.setCollar(req.getParameter("Collar"));
+		product.setLogo(req.getParameter("Logo"));
+		product.setSleeves(req.getParameter("Sleeves"));
+		product.setTshirtColor(req.getParameter("TshirtColor"));
+		
+		logger.info("Tshirt type "+req.getParameter("TshirtType"));
+		
+		
+		productService.saveProductData(product);
+		
+		System.out.println("val1 "+req.getParameter("TshirtColor"));
+		
+		return "Page2Display";
+		
 	}
 	
 }
