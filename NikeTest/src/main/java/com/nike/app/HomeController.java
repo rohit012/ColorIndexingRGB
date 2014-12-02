@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +21,7 @@ import com.nike.services.ProductService;
 @Controller
 public class HomeController {
 	
-	@Autowired
-	MongoTemplate mongoTemplate;
+	
 	
 	@Autowired
 	ProductService productService;
@@ -121,6 +119,16 @@ public class HomeController {
 		product.setTshirtColor(req.getParameter("TshirtColor"));
 		
 		logger.info("Tshirt type "+req.getParameter("TshirtType"));
+		
+		if(req.getParameter("TshirtType").toString().equalsIgnoreCase("roundcollar")){
+			
+			product.setTshirtTypeValue(2);
+		}
+		else if(req.getParameter("TshirtType").toString().equalsIgnoreCase("polocollar")){
+			
+			product.setTshirtTypeValue(1);
+			
+		}
 		
 		
 		productService.saveProductData(product);

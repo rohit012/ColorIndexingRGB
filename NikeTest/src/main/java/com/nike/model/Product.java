@@ -1,17 +1,30 @@
 package com.nike.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.io.Serializable;
+
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.neo4j.annotation.GraphId;
+import org.springframework.data.neo4j.annotation.NodeEntity;
 
 
-@Document(collection = "products")
-public class Product {
+
+@NodeEntity
+@TypeAlias("Product")
+public class Product implements Serializable{
+
+	@GraphId
+	private Long id;
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	
-	@Id
-	private String id;
-	
-
 	private String tshirtColor;
 	private String collar;
 	private String logo;
@@ -22,8 +35,25 @@ public class Product {
 	private int logoValue;
 	private int sleevesValue;
 	
-	private int tshirtType;
 	private int tshirtTypeValue;
+	
+	public Product(){}
+	
+	
+	public Product(String tshirtColor, String collar, String logo,
+			String sleeves, int tshirtColorValue, int collarValue,
+			int logoValue, int sleevesValue, int tshirtTypeValue) {
+		super();
+		this.tshirtColor = tshirtColor;
+		this.collar = collar;
+		this.logo = logo;
+		this.sleeves = sleeves;
+		this.tshirtColorValue = tshirtColorValue;
+		this.collarValue = collarValue;
+		this.logoValue = logoValue;
+		this.sleevesValue = sleevesValue;
+		this.tshirtTypeValue = tshirtTypeValue;
+	}
 	
 	
 	
@@ -68,13 +98,6 @@ public class Product {
 	}
 
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getTshirtColor() {
 		return tshirtColor;
@@ -107,16 +130,6 @@ public class Product {
 	public void setSleeves(String sleeves) {
 		this.sleeves = sleeves;
 	}
-
-	public int getTshirtType() {
-		return tshirtType;
-	}
-
-	public void setTshirtType(int tshirtType) {
-		this.tshirtType = tshirtType;
-	}
-
-
 
 	
 		
