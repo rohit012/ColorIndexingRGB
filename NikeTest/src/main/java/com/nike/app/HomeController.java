@@ -45,7 +45,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );*/
 		
-		 MongoOperations mongoOperation = (MongoOperations)mongoTemplate;
+		 /*MongoOperations mongoOperation = (MongoOperations)mongoTemplate;
 			
 		    
 			User user = new User("rohitwexsxx", "password123");
@@ -60,7 +60,7 @@ public class HomeController {
 
 
 		System.out.println("request param received is "+req.getAttributeNames());
-		
+		*/
 		return "index";
 	}
 	
@@ -80,6 +80,30 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );*/
 		
 		return "color";
+	}
+	
+	
+	/**
+	 * to display page1
+	 */
+	@RequestMapping(value = "/page1Display")
+	public String page1Display(Locale locale, Model model,HttpServletRequest req) {
+		
+		
+		
+		return "Page1Display";
+	}
+	
+	
+	/**
+	 * to display page2
+	 */
+	@RequestMapping(value = "/page2Display")
+	public String page2Display(Locale locale, Model model,HttpServletRequest req) {
+		
+		
+		
+		return "Page2Display";
 	}
 	
 }
