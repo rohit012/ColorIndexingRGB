@@ -171,7 +171,10 @@ public class ProductServiceImpl implements ProductService{
 		
 
 		Product[] prodArrayFinal=new Product[5];
-		int num=0;
+		
+		prodArrayFinal[0]=product;
+		
+		int num=1;
 		
 		for(Product pro:productsArray){
 			if(num>4)
