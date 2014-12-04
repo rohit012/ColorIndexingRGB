@@ -14,5 +14,17 @@ public class testMahout {
 	
 	
 	}*/
+	
+	
+	@Test
+	public void test() {
+	
+		Double b=0.0;
+		double c=0.0;
+		System.out.println(c==0);
+	
+	
+	
+	}
 
 }

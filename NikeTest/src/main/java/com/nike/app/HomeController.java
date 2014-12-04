@@ -131,9 +131,19 @@ public class HomeController {
 		}
 		
 		
-		productService.saveProductData(product);
+		Product[] recommendedProd=productService.saveProductData(product);
 		
-		System.out.println("val1 "+req.getParameter("TshirtColor"));
+		for(int i=0;i<5;i++){
+			System.out.println("values of collar "+recommendedProd[i].getCollar());
+			System.out.println("values of logo "+recommendedProd[i].getLogo());
+			System.out.println("values of shirt "+recommendedProd[i].getTshirtColor());
+			System.out.println("values of sleeves "+recommendedProd[i].getSleeves());
+			System.out.println("type of neck"+recommendedProd[i].getTshirtTypeValue());
+			
+		}
+		
+		
+	//	System.out.println("val for prod "+""+req.getParameter("TshirtColor"));
 		
 		return "Page2Display";
 		

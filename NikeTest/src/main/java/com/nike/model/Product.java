@@ -1,6 +1,6 @@
 package com.nike.model;
 
-import java.io.Serializable;
+import java.util.Comparator;
 
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.neo4j.annotation.GraphId;
@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 
 @NodeEntity
 @TypeAlias("Product")
-public class Product implements Serializable{
+public class Product implements Comparator<Product>,Comparable<Product>{
 
 	@GraphId
 	private Long id;
@@ -36,6 +36,11 @@ public class Product implements Serializable{
 	private int sleevesValue;
 	
 	private int tshirtTypeValue;
+	
+	
+	
+	private double euclDist;
+	
 	
 	public Product(){}
 	
@@ -131,7 +136,64 @@ public class Product implements Serializable{
 		this.sleeves = sleeves;
 	}
 
-	
+
+	public double getEuclDist() {
+		return euclDist;
+	}
+
+
+	public void setEuclDist(double euclDist) {
+		this.euclDist = euclDist;
+	}
+
+
+	@Override
+	public int compareTo(Product o) {
+		// TODO Auto-generated method stub
 		
+		
+		
+		Double differ=(Double)(this.euclDist-o.getEuclDist());
+		return (differ.intValue());
+	}
+
+	
+	
+	@Override
+	   public boolean equals(Object other){
+		 
+		
+		/*if(other == null || (this.getClass() != other.getClass())){
+	           return false;
+	       }
+		
+		Product product2=(Product)other;
+		
+		
+		if (this.collarValue==product2.getCollarValue()&&
+				this.logoValue==product2.getLogoValue()&&
+				this.sleevesValue==product2.getSleevesValue()&&
+				this.tshirtColorValue==product2.getCollarValue()&&
+				this.tshirtTypeValue==product2.getTshirtTypeValue()){
+		
+			return true;
+	   }
+	
+		return false;*/
+		
+		if(((Product)other).getEuclDist() == this.getEuclDist()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
+	@Override
+	public int compare(Product o1, Product o2) {
+		
+
+		Double differ=(Double)(o1.euclDist-o2.getEuclDist());
+		return (differ.intValue());}
 
 }

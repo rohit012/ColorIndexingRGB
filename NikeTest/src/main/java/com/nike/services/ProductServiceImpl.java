@@ -1,8 +1,12 @@
 package com.nike.services;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure;
 import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.Vector;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +27,7 @@ public class ProductServiceImpl implements ProductService{
 	Neo4jTemplate neo4jTemplate;
 	
 	@Override
-	public boolean saveProductData(Product product) {
+	public Product[] saveProductData(Product product) {
 		Product newProduct=product;
 		
 		newProduct.setCollarValue(Integer.parseInt(newProduct.getCollar().substring(1),16));
@@ -46,9 +50,9 @@ public class ProductServiceImpl implements ProductService{
 		
 		
 		neo4jTemplate.save(product);
-		recommendedProducts(product);
+		return recommendedProducts(product);
 		
-		return true;
+		
 	}
 
 	@Override
@@ -58,7 +62,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<Product> recommendedProducts(Product product) {
+	public Product[] recommendedProducts(Product product) {
 		
 		
 		Result<Product> prodList=neo4jTemplate.findAll(Product.class);
@@ -75,32 +79,112 @@ public class ProductServiceImpl implements ProductService{
 		prodVector.set(3, product.getTshirtColorValue());
 		prodVector.set(4, product.getTshirtTypeValue());
 		
-		Vector tempVector= new DenseVector();
+		Vector tempVector= new DenseVector(5);
+		double tempEuc;
+		
 		
 		int i=0;
 		for(Product product2:prodList){
 			
 			System.out.println("collar type"+ product2.getCollar());
-			productsArray.add(product2);
-			System.out.println("in array list"+productsArray.get(i).getLogo());
+			
+	//		System.out.println("in array list"+productsArray.get(i).getLogo());
 			
 			tempVector.set(0, product2.getCollarValue());
 			tempVector.set(1, product2.getLogoValue());
-			tempVector.set(2, product.getSleevesValue());
-			tempVector.set(3, product.getTshirtColorValue());
-			tempVector.set(4, product.getTshirtTypeValue());
+			tempVector.set(2, product2.getSleevesValue());
+			tempVector.set(3, product2.getTshirtColorValue());
+			tempVector.set(4, product2.getTshirtTypeValue());
 			
+			vectorRecom.add(tempVector);
 			
+			tempEuc=new SquaredEuclideanDistanceMeasure().distance(tempVector, prodVector);
 			
+			eucDist.add(tempEuc);
 			
-			vectorRecom.add(new);
+			System.out.println("temp euc "+tempEuc);
 			
+			product2.setEuclDist(tempEuc);
+			productsArray.add(product2);
 			i++;
 		}
 		
+	//	Collections.sort(productsArray,new Product());
+		HashSet<Double> ecluSet = new HashSet<Double>();
+		
+		ArrayList<Product> tempList = new ArrayList<Product>();
+		for(Product temp_product:productsArray){
+			if(temp_product.getEuclDist()!=0){
+				if(ecluSet.contains(temp_product.getEuclDist())){
+					
+				}else{
+					tempList.add(temp_product);
+					ecluSet.add(temp_product.getEuclDist());
+				}
+				
+			}
+		}
+		
+		productsArray = tempList;
 		
 		
-		return null;
+		
+		
+		Set<Product> prodSet = new HashSet<Product>(productsArray);
+		productsArray = new ArrayList<Product>(prodSet);
+		
+		for(Product pro:productsArray){
+			
+			System.out.println("Before Sorted val "+BigDecimal.valueOf(pro.getEuclDist()).toPlainString());	
+			System.out.println("Before Sorted val "+pro.getEuclDist());			
+
+		}
+		
+
+		Product product_nearst =  productsArray.get(0);
+		int innerElementIndex = 0;
+		int smallEclIndex = 0;
+		
+		for(int sortedElementIndex=1;sortedElementIndex<productsArray.size();sortedElementIndex++){
+			
+			product_nearst = productsArray.get(sortedElementIndex-1);
+			smallEclIndex = sortedElementIndex - 1;
+			
+			boolean isSwapRequired = false;
+			for(innerElementIndex=sortedElementIndex;innerElementIndex<productsArray.size();innerElementIndex++){
+				if(productsArray.get(innerElementIndex).getEuclDist() != 0){
+					if(productsArray.get(innerElementIndex).getEuclDist()<product_nearst.getEuclDist()){
+						isSwapRequired = true;
+						product_nearst = productsArray.get(innerElementIndex);
+						smallEclIndex = innerElementIndex;
+					}
+				}
+			}
+			
+			if(isSwapRequired){
+				Product temp_product = productsArray.get(smallEclIndex);
+				productsArray.set(smallEclIndex, productsArray.get(sortedElementIndex - 1));
+				productsArray.set(sortedElementIndex - 1, temp_product);
+			}
+			
+		}
+		
+
+		Product[] prodArrayFinal=new Product[5];
+		int num=0;
+		
+		for(Product pro:productsArray){
+			if(num>4)
+				break;
+			prodArrayFinal[num]=pro;
+			num++;
+			System.out.println("After Sorted val "+BigDecimal.valueOf(pro.getEuclDist()).toPlainString());
+			System.out.println("Before Sorted val "+pro.getEuclDist());	
+			
+		}
+		
+		
+		return prodArrayFinal;
 	}
 
 }

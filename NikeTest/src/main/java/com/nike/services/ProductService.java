@@ -12,8 +12,8 @@ public interface ProductService {
 	
 	public Product getProductData();
 
-	boolean saveProductData(Product product);
+	Product[] saveProductData(Product product);
 	
-	List<Product> recommendedProducts(Product product);
+	Product[] recommendedProducts(Product product);
 	
 }
