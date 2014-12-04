@@ -88,8 +88,8 @@
 							<ul class="nav navbar-nav">
 								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="/app/checkout1"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="/app/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="checkout1"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="app/login"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
@@ -115,21 +115,21 @@
 								<li><a href="/app">Home</a></li>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="/app/shop">Products</a></li>
-										<li><a href="/app/product-details">Product Details</a></li> 
-										<li><a href="/app/checkout1">Checkout</a></li> 
-										<li><a href="/app/cart">Cart</a></li> 
-										<li><a href="/app/login">Login</a></li> 
+                                        <li><a href="shop">Products</a></li>
+										<li><a href="product-details">Product Details</a></li> 
+										<li><a href="checkout1">Checkout</a></li> 
+										<li><a href="cart">Cart</a></li> 
+										<li><a href="login">Login</a></li> 
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         
-										<li><a href="/app/blog-single">Blog Single</a></li>
+										<li><a href="blog-single">Blog Single</a></li>
                                     </ul>
                                 </li> 
-								<li><a href="/app/product-details">Customize</a></li>
-								<li><a href="/app/contact-us" class="active">Contact</a></li>
+								<li><a href="product-details">Customize</a></li>
+								<li><a href="contact-us" class="active">Contact</a></li>
 							</ul>
 						</div>
 					</div>

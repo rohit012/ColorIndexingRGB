@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="/app/indexl"><img src="resources/images/home/logo.png" alt="" /></a>
+							<a href="indexl"><img src="resources/images/home/logo.png" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
@@ -88,9 +88,9 @@
 							<ul class="nav navbar-nav">
 								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="/app/checkout1" class="active"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="/app/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="/app/login"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="checkout1" class="active"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="login"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -115,11 +115,11 @@
 								<li><a href="/app">Home</a></li>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="/app/shop">Products</a></li>
-										<li><a href="/app/product-details">Product Details</a></li> 
-										<li><a href="/app/checkout1" class="active">Checkout</a></li> 
-										<li><a href="/app/cart">Cart</a></li> 
-										<li><a href="/app/login">Login</a></li> 
+                                        <li><a href="shop">Products</a></li>
+										<li><a href="product-details">Product Details</a></li> 
+										<li><a href="checkout1" class="active">Checkout</a></li> 
+										<li><a href="cart">Cart</a></li> 
+										<li><a href="login">Login</a></li> 
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -128,8 +128,8 @@
 										<li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li> 
-								<li><a href="/app/product-details">Customize</a></li>
-								<li><a href="/app/contact-us">Contact</a></li>
+								<li><a href="product-details">Customize</a></li>
+								<li><a href="contact-us">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -1681,7 +1681,7 @@ div.centre
 </div>      
 
 </div>
-<form action="/app/cart" method="GET">
+<form action="cart" method="GET">
 <!--Recommendation 4 -->
 <input type="hidden" id= "c15" value=${origProdNeck} name="c15" />
 <input type="hidden" id= "c25" value=${Prod1Neck} name="c25" />

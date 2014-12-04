@@ -1495,7 +1495,7 @@ div.centre
 </div>      
 
 </div>
-<form action="/app/cart1" method="GET">
+<form action="cart1" method="GET">
 <!--Recommendation 4 -->
 <input type="hidden" id= "c15" value="1" name="c15" />
 <input type="hidden" id= "c25" value="0" name="c25" />

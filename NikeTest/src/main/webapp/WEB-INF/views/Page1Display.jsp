@@ -610,7 +610,7 @@
 
 
 </div>
-<form action = "/app/page1Data" method="POST">
+<form action = "page1Data" method="POST">
 
 <input type="hidden" name="TshirtColor" id="TshirtColor" value="#96E843"/>
 <input type="hidden" name="Collar" id="Collar" value="#000000"/>
