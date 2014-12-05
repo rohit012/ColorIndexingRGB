@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="indexl"><img src="resources/images/home/logo.png" alt="" /></a>
+							<a href="/"><img src="resources/images/home/logo.png" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
@@ -203,7 +203,7 @@ div.centre
           document.getElementById("dummy").style.height = "450px";                 
         var c15 = document.getElementById("c15").value;
         
-        if(c15 == "1")
+        if(c15 == "2")
         {
           document.getElementById("svg2").style.display = "none";          
           document.getElementById("svg1").style.display = "none"; //block          
@@ -219,7 +219,7 @@ div.centre
 
         var c25 = document.getElementById("c25").value;
         
-        if(c25 == "1")
+        if(c25 == "2")
         {
           document.getElementById("svg4").style.display = "none";          
           document.getElementById("svg3").style.display = "block"; 
@@ -237,7 +237,7 @@ div.centre
 
         var c35 = document.getElementById("c35").value;
         
-        if(c35 == "1")
+        if(c35 == "2")
         {
           document.getElementById("svg6").style.display = "none";          
           document.getElementById("svg5").style.display = "block";          
