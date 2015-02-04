@@ -1,18 +1,16 @@
 package com.nike.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document(collection = "users")
+
 public class User {
 
 	
-	@Id
+	
 	private String id;
 	private String username;
 	private String gender;
-	private  int countryCode;
+	private  int countryCode;  //country code
  
 
 	public String getId() {

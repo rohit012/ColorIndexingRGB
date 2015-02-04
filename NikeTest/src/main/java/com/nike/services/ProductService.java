@@ -1,5 +1,7 @@
 package com.nike.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.nike.model.Product;
@@ -10,6 +12,8 @@ public interface ProductService {
 	
 	public Product getProductData();
 
-	boolean saveProductData(Product product);
+	Product[] saveProductData(Product product);
+	
+	Product[] recommendedProducts(Product product);
 	
 }
