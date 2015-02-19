@@ -305,6 +305,16 @@ public class HomeController {
 	}
 	
 	
+	@RequestMapping(value = "/hummSF", method = RequestMethod.GET)
+	public String hummSFDisplay(Locale locale, Model model) {
+		
+		
+		
+		
+		return "hummSF";
+	}
+	
+	
 	
 	
 }
